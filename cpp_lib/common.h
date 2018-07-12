@@ -6,6 +6,7 @@
 #include <string.h>
 #include <memory>
 
+/* string.format */
 template <typename T>
 struct delete_ptr
 {
@@ -24,6 +25,7 @@ void string_format(std::string &str, U&&... u)
     return std_string_format(str, vscprintf(std::forward<U>(u)...) + 1, std::forward<U>(u)...);
 }
 
+/* url_pasrse */
 std::tuple<std::string, int> pasrse_dns(std::string dns);
 std::tuple<std::string, std::string, int> pasrse_url(std::string url);
 
