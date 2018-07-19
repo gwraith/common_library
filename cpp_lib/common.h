@@ -17,12 +17,12 @@ struct delete_ptr
 };
 
 int vscprintf(const char *format, ...);
-void std_string_format(std::string & _str, int num_of_chars, const char * format, ...);
+std::string std_string_format(int num_of_chars, const char * format, ...);
 
 template <typename... U>
-void string_format(std::string &str, U&&... u)
+std::string string_format(U&&... u)
 {
-    return std_string_format(str, vscprintf(std::forward<U>(u)...) + 1, std::forward<U>(u)...);
+    return std_string_format(vscprintf(std::forward<U>(u)...) + 1, std::forward<U>(u)...);
 }
 
 /* url_pasrse */

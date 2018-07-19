@@ -9,14 +9,14 @@ int vscprintf(const char *format, ...)
     return num;
 }
 
-void std_string_format(std::string & _str, int num_of_chars, const char * format, ...)
+std::string std_string_format(int num_of_chars, const char * format, ...)
 {
     std::shared_ptr<char> tmp_buffer(new char[num_of_chars], delete_ptr<char>());
     va_list marker;
     va_start(marker, format);
     int ret = vsnprintf(tmp_buffer.get(), num_of_chars, format, marker);
     va_end(marker);
-    _str = std::string(tmp_buffer.get(), ret);
+    return std::string(tmp_buffer.get(), ret);
 }
 
 std::tuple<std::string, int> pasrse_dns(std::string dns)
@@ -63,4 +63,11 @@ std::tuple<std::string, std::string, int> pasrse_url(std::string url)
     }
 }
 
+
+int main()
+{
+    std::string test = string_format("name: %s year: %d\n", "gaoyaming", 20);
+    printf("test: %s", test.c_str());
+    return 0;
+}
 
