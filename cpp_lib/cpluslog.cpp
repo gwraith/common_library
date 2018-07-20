@@ -267,5 +267,7 @@ int main()
     m_log->init_cplus_log();
     LogDefaultPara("name: %s age: %d", "gaoyaming", 20);
     LogErrorPara("name: %s age: %d", "jack", 30);
+    printf("11111\n");
+    printf("22222\n");
     return 0;
 }
