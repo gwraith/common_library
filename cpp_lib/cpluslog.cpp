@@ -262,6 +262,7 @@ void CPlusLog::delete_once_log(int type)
     closedir(dir);
 }
 
+#if 0
 int main()
 {
     m_log->init_cplus_log();
@@ -271,3 +272,4 @@ int main()
     printf("22222\n");
     return 0;
 }
+#endif

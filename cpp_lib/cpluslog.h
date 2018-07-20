@@ -24,7 +24,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#include "string_format.hpp"
+#include "string_format.h"
 
 using namespace std::chrono;
 
@@ -41,19 +41,22 @@ public:
         rotation_error = false;
         m_fpNorma = nullptr;
         m_fpError = nullptr;
+        m_norma_thread = nullptr;
+        m_error_thread = nullptr;
     };
     ~CPlusLog() {
-        while (!m_norma_list.empty() || !m_error_list.empty())
+        while ((!m_norma_list.empty() && m_norma_thread != nullptr) || (!m_error_list.empty() && m_norma_thread != nullptr))
             sleep(1);
         
         /* 线程退出 */
         b_endthread = true;
-        if (m_norma_thread->joinable()) m_norma_thread->join();
-        if (m_error_thread->joinable()) m_error_thread->join();
+        if (m_norma_thread != nullptr && m_norma_thread->joinable()) m_norma_thread->join();
+        if (m_error_thread != nullptr && m_error_thread->joinable()) m_error_thread->join();
 
         /* 关闭描述符 */
         if (m_fpNorma) fclose(m_fpNorma);
         if (m_fpError) fclose(m_fpError);
+        printf("~CPlusLog: %d\n", getpid());
     };
 
 public:
