@@ -1,9 +1,8 @@
-#ifndef __CPLUS_LOG_MONITOR_H__
-#define __CPLUS_LOG_MONITOR_H__
 /************************************************************************/
 // 日志模块
-// [7/19/2018 gaoyaming]
 /************************************************************************/
+#ifndef __CPLUS_LOG_MONITOR_H__
+#define __CPLUS_LOG_MONITOR_H__
 
 #include <time.h>
 #include <errno.h>

@@ -9,6 +9,14 @@ int vscprintf(const char *format, ...)
     return num;
 }
 
+//************************************
+// 函数名称:  std_string_format
+// 函数参数:  int num_of_chars
+// 函数参数:  const char * format
+// 函数参数:  ...
+// 函数返回:  std::string
+// 函数说明: 
+//************************************
 std::string std_string_format(int num_of_chars, const char * format, ...)
 {
     std::shared_ptr<char> tmp_buffer(new char[num_of_chars], delete_ptr<char>());
